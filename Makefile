@@ -5,13 +5,13 @@ STM_PERIPH=STM32F4xx_DSP_StdPeriph_Lib_V1.8.0
 CC=arm-none-eabi-gcc
 OBJCOPY=arm-none-eabi-objcopy
 
-CFLAGS = -g -O2 -Wall 
-CFLAGS += -T$(STM_PERIPH)/Project/STM32F4xx_StdPeriph_Templates/TrueSTUDIO/STM32F429_439xx/STM32F439NI_FLASH.ld
+CFLAGS = -g3 -O2 -Wall 
+CFLAGS += -T$(STM_PERIPH)/Project/STM32F4xx_StdPeriph_Templates/TrueSTUDIO/STM32F40_41xxx/STM32F417IG_FLASH.ld
 CFLAGS += -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork
 CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
 CFLAGS += --specs=nosys.specs
 CFLAGS += -DUSE_STDPERIPH_DRIVER
-CFLAGS += -DSTM32F429_439xx #Update this to match your board.
+CFLAGS += -DSTM32F40_41xxx #Update this to match your board.
 CFLAGS += -I.
 CFLAGS += -I$(STM_PERIPH)/Libraries/CMSIS/Include
 CFLAGS += -I$(STM_PERIPH)/Libraries/CMSIS/Device/ST/STM32F4xx/Include
@@ -21,7 +21,8 @@ CFLAGS += -I$(STM_PERIPH)/Project/STM32F4xx_StdPeriph_Templates
 SRCS += $(STM_PERIPH)/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.c
 SRCS += $(STM_PERIPH)/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c
 SRCS += $(STM_PERIPH)/Project/STM32F4xx_StdPeriph_Templates/system_stm32f4xx.c
-SRCS += $(STM_PERIPH)/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates/TrueSTUDIO/startup_stm32f429_439xx.s
+SRCS += $(STM_PERIPH)/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates/TrueSTUDIO/startup_stm32f40_41xxx.s
+#SRCS += /Users/brianvuong/workspace_v8/FreeRTOS-Demo-STM32F4-Discovery/RTOS-Demo/startup/startup_stm32f4xx.S
 
 .PHONY: toggle
 
