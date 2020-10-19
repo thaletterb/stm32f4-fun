@@ -52,3 +52,4 @@ The result - pressing the blue USER button will toggle LED 13!
 ### Credit
 1. http://www.wolinlabs.com/blog/linux.stm32.discovery.gcc.html - C and Makefile are adapted from here.
 2. https://spin.atomicobject.com/2013/08/10/arm-cortex-m-toolchain/
+3. https://charleskorn.com/2016/05/08/a-deeper-look-at-the-stm32f4-project-template-linking-it-all-together/
