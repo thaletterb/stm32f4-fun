@@ -5,19 +5,7 @@
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_gpio.h"
 
-static void vBlinkTask(void *param)
-{
-    for(;;)
-    {
-        /* PD12,13,14,15 Toggle */
-        GPIO_ToggleBits(GPIOD, GPIO_Pin_12);
-        GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
-        GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
-        GPIO_ToggleBits(GPIOD, GPIO_Pin_15);
-
-        vTaskDelay(1000);
-    }
-}
+#include "SystemTasks.h"
 
 int main(void) {
     /* GPIOD, GPIOD Periph clock enable */
@@ -45,10 +33,9 @@ int main(void) {
     GPIO_SetBits(GPIOD, GPIO_Pin_13);
     GPIO_SetBits(GPIOD, GPIO_Pin_14);
     GPIO_SetBits(GPIOD, GPIO_Pin_15);
-    volatile uint8_t button_pressed = 0;
 
     /* Make the blinky task */
-    xTaskCreate( vBlinkTask, "Blink", configMINIMAL_STACK_SIZE, ( void * ) NULL, tskIDLE_PRIORITY, NULL );
+    SystemTasks_startAll();
 
     /* Start the scheduler. */
     vTaskStartScheduler();
